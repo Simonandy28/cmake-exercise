@@ -4,6 +4,7 @@ RUN apt-get update && \
     apt-get install -y \
     build-essential \ 
     cmake \
-    libboost-all-dev
+    libboost-all-dev \
+    libdeal.ii-dev
 
 WORKDIR /cmake-exercise
