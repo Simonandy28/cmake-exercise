@@ -10,12 +10,16 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 find_package(deal.II REQUIRED)
 deal_ii_initialize_cached_variables()
 
+# Find yaml
+find_package(yaml-cpp REQUIRED)
+
 # Source files
 add_executable(main 
     main.cpp
     flatset/flatset.cpp 
     filesystem/filesystem.cpp
     fem/fem.cpp
+    yamlParser/yamlParser.cpp
 )
 
 # Include directories so that main can find header files
@@ -23,6 +27,9 @@ target_include_directories(main PUBLIC ${CMAKE_SOURCE_DIR})
 
 # Needed to link boost filesystem
 target_link_libraries(main Boost::filesystem)
+
+# Needed to link yaml
+target_link_libraries(main yaml-cpp)
 
 # macro: https://dealii.org/current/users/cmake_user.html#cmakeauto
 deal_ii_setup_target(main)
